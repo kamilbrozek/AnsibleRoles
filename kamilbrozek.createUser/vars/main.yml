@@ -1,0 +1,13 @@
+---
+# vars file for kamilbrozek.createUser
+
+user_name: "testuser"
+user_password: "testuser"
+is_sudo: true
+user_groups: "{% if is_sudo == true %}{{user_name}}, sudo{% else %}{{ user_name }}{% endif %}"
+user_home_dir: "/home/{{ user_name }}"
+user_create_home: true
+user_shell: "/bin/bash"
+
+
+

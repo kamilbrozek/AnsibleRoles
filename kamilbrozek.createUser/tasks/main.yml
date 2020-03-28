@@ -1,0 +1,31 @@
+# tasks file for kamilbrozek.createUser
+
+- name: "Ensure group {{ user_name }} exists"
+  group:
+    name: "{{ user_name }}"
+    state: present
+
+
+- name: "Create user {{ user_name }} "
+  user:
+    name: "{{ user_name }}"
+    groups: "{{ user_groups }}"
+    shell: "{{ user_shell }}"
+    create_home: "{{ user_create_home }}"
+    
+- name: Add user to nopassword
+  template:
+    src: sudo_user.j2
+    dest: "/etc/sudoers.d/{{ user_name }}"
+    owner: root
+    group: root
+    mode: '0440'
+    validate: '/usr/sbin/visudo -cf %s'
+
+- name: test variables 
+  debug:
+    msg: "{{ is_sudo }}"
+
+- name: test variables 
+  debug:
+    msg: "{{ user_groups }}"

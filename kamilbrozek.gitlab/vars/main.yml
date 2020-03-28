@@ -1,2 +1,8 @@
 ---
 # vars file for kamilbrozek.gitlab
+
+
+required_package:
+  - curl
+  - openssh-server
+  - ca-certificates
