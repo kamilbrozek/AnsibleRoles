@@ -1,2 +1,7 @@
 ---
 # vars file for kamilbrozek.addSSHKeyToUser
+
+remote_user: "user"
+public_key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+authorized_key_path: "/home/{{ remote_user }}/.ssh/authorized_key"
+#authorized_key_path: ""

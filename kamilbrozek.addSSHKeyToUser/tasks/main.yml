@@ -1,2 +1,8 @@
 ---
 # tasks file for kamilbrozek.addSSHKeyToUser
+
+- name: "Set authorized key for user {{ remote_user }} copying it from current user"
+  authorized_key:
+    user: "{{ remote_user }}"
+    state: present
+    key: "{{ public_key }}"
